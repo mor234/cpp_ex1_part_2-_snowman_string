@@ -123,9 +123,7 @@ X(TTT)Y
         }
         return arr;
     }
-    
-
-    
+      
 	string snowman(int snowmanToBuild){
         
         if(snowmanToBuild>BIGGEST_8_CHAR_NUMBER||snowmanToBuild<SMALLEST_8_CHAR_NUMBER)
@@ -145,61 +143,57 @@ X(TTT)Y
      */
         
         string snowmanStr="\n";
-        int i=0;
+       
 
         //HAT
-        snowmanStr+=HATS[convertNumberToIndex(numbersArr[i])]+"\n";
-        i++;
+        snowmanStr+=HATS[convertNumberToIndex(numbersArr[H])]+"\n";
+
 
         //LEFT HAND 1
         
-        int indexLeftHand2=convertNumberToIndex(numbersArr[i]);
+        int indexLeftHand2=convertNumberToIndex(numbersArr[X]);
         const int NONE_INDEX=3;
         string leftArm=LEFT_ARMS[NONE_INDEX];
         
-        if (leftArm==UPWARDS_LEFT_ARM)
+        if (LEFT_ARMS[indexLeftHand2]==UPWARDS_LEFT_ARM)
         {
             leftArm=LEFT_ARMS[indexLeftHand2];
             indexLeftHand2=NONE_INDEX;  //the hand wil be here, and the next line is none      
         }
         snowmanStr+=leftArm+"(";
-        i++;
 
         //LEFT EYE
-         snowmanStr+=EYES[convertNumberToIndex(numbersArr[i])];
-         i++;
+         snowmanStr+=EYES[convertNumberToIndex(numbersArr[L])];
 
         //NOSE
-         snowmanStr+=NOSES[convertNumberToIndex(numbersArr[i])];
-         i++;
+         snowmanStr+=NOSES[convertNumberToIndex(numbersArr[N])];
 
         //RIGHT EYE
-         snowmanStr+=EYES[convertNumberToIndex(numbersArr[i])]+")";
-         i++;
+         snowmanStr+=EYES[convertNumberToIndex(numbersArr[R])]+")";
 
 
 
         //RIGHT HAND 1
-        int indexRightHand2=convertNumberToIndex(numbersArr[i]);
+        int indexRightHand2=convertNumberToIndex(numbersArr[Y]);
         string rightArm=RIGHT_ARMS[NONE_INDEX];
-        if (rightArm==UPWARDS_RIGHT_ARM)
+        if (RIGHT_ARMS[indexRightHand2]==UPWARDS_RIGHT_ARM)
         {      
             rightArm=RIGHT_ARMS[indexRightHand2];
             indexRightHand2=NONE_INDEX;  //the hand will be here, and the next line is none
         }
         snowmanStr+=rightArm+"\n";
-        i++;
+
         //LEFT HAND 2
         snowmanStr+=LEFT_ARMS [indexLeftHand2]+"(";
+
         //TORSO
-        snowmanStr+=TORSO [convertNumberToIndex(numbersArr[i])]+")";
-        i++;
+        snowmanStr+=TORSO [convertNumberToIndex(numbersArr[T])]+")";
+
         //RIGHT HAND 2
         snowmanStr+=RIGHT_ARMS [indexRightHand2]+"\n";
-     
-     
+          
         //BASE
-        snowmanStr+=" ("+BASE [indexRightHand2]+") \n";
+        snowmanStr+=" ("+BASE [convertNumberToIndex(numbersArr[B])]+") \n";
         delete [] numbersArr;
         return snowmanStr  ;
     }
